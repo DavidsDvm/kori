@@ -510,7 +510,7 @@
     bs58 "^6.0.0"
     viem "^2.30.5"
 
-"@lifi/types@^17.16.0":
+"@lifi/types@^17.16.0", "@lifi/types@^17.18.0":
   version "17.18.0"
   resolved "https://registry.yarnpkg.com/@lifi/types/-/types-17.18.0.tgz#8bbc186e284bcdf787bdb06341e223c5067b88d9"
   integrity sha512-rDHJZ3dwSdG/ZK/CKjfPs3SvCnADLPNNbDtWo1BXMtUY4wdO9ZjoxlpoHj4zzu/LPWVejUf7j4hiNOE43rFd5A==
