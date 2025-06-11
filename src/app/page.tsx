@@ -75,7 +75,9 @@ export default function HomePage() {
           </div>
           <div className="mt-16 sm:mt-24 lg:mt-0 flex items-center justify-center relative">
             {/* Geometric Background */}
-            <div className="absolute inset-0 flex items-center justify-center -z-10">
+            <div 
+              className="absolute inset-0 flex items-center justify-center -z-10"
+            >
               <svg
                 width="800"
                 height="800"
@@ -96,13 +98,25 @@ export default function HomePage() {
                 />
               </svg>
             </div>
-            <Image 
-              src="/images/metamask-card4x.avif" 
-              alt="metamask card" 
-              width={500} 
-              height={500}
-              className="w-full h-auto max-w-lg relative z-10"
-            />
+            <motion.div
+              animate={{ 
+                y: [0, -15, 0],
+                scale: [1, 1.02, 1]
+              }}
+              transition={{ 
+                duration: 7,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <Image 
+                src="/images/metamask-card4x.avif" 
+                alt="metamask card" 
+                width={500} 
+                height={500}
+                className="w-full h-auto max-w-lg relative z-10"
+              />
+            </motion.div>
           </div>
         </div>
       </div>
@@ -111,15 +125,22 @@ export default function HomePage() {
       <div id="features" className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-semibold leading-7 text-indigo-600">
-              Deploy faster
-            </h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Everything you need to deploy your app
-            </p>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Kori provides a complete solution for converting MetaMask debit cards into credit cards while ensuring instant merchant payments.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-base font-semibold leading-7 text-indigo-600">
+                Deploy faster
+              </h2>
+              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Everything you need to deploy your app
+              </p>
+              <p className="mt-6 text-lg leading-8 text-gray-600">
+                Kori provides a complete solution for converting MetaMask debit cards into credit cards while ensuring instant merchant payments.
+              </p>
+            </motion.div>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
@@ -161,12 +182,19 @@ export default function HomePage() {
       <div className="bg-white">
         <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
-            <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Start building your credit today
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-              Connect your wallet and start using Kori to build your credit score while enjoying instant merchant payments.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Start building your credit today
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
+                Connect your wallet and start using Kori to build your credit score while enjoying instant merchant payments.
+              </p>
+            </motion.div>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <WalletConnect />
               <a
