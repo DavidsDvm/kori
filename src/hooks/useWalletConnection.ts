@@ -8,9 +8,8 @@ export const useWalletConnection = () => {
 
   const checkWalletConnection = (pageName: string) => {
     if (!isConnected) {
-      console.log('is here');
-      toast.error(`Please connect your wallet to access ${pageName}`)
       router.push('/')
+      toast.error(`Please connect your wallet to access ${pageName}`)
       return false
     }
     return true
