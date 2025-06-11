@@ -81,6 +81,7 @@ jobs:
           NEXT_PUBLIC_CIRCLE_CLIENT_KEY: ${{ secrets.NEXT_PUBLIC_CIRCLE_CLIENT_KEY }}
           NEXT_PUBLIC_CIRCLE_CLIENT_URL: ${{ secrets.NEXT_PUBLIC_CIRCLE_CLIENT_URL }}
           NEXT_PUBLIC_NODE_ENV: ${{ secrets.NEXT_PUBLIC_NODE_ENV }}
+          NEXT_PUBLIC_BASE_PATH: ${{ secrets.NEXT_PUBLIC_BASE_PATH }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
