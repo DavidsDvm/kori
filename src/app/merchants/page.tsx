@@ -1,7 +1,7 @@
 'use client'
 
+import dynamicImport from 'next/dynamic'
 import { useEffect, useState } from 'react'
-import { useUserStore } from '@/store/user'
 import { useMerchantIntegration } from '@/hooks/useMerchantIntegration'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -9,7 +9,12 @@ import { motion } from 'framer-motion'
 import { Store, TrendingUp, DollarSign, Clock, AlertCircle, CheckCircle2 } from 'lucide-react'
 import { useWalletConnection } from '@/hooks/useWalletConnection'
 
-export default function MerchantsPage() {
+// Disable pre-rendering for this page
+export const dynamic = 'force-dynamic'
+export const runtime = 'edge'
+
+function MerchantsPageContent() {
+  const [mounted, setMounted] = useState(false)
   const { checkWalletConnection } = useWalletConnection()
   const {
     merchants,
@@ -19,8 +24,13 @@ export default function MerchantsPage() {
   } = useMerchantIntegration()
 
   useEffect(() => {
+    setMounted(true)
     checkWalletConnection('Merchants')
   }, [checkWalletConnection])
+
+  if (!mounted) {
+    return null
+  }
 
   const totalSettlementFees = merchants.reduce((sum, m) => {
     const stats = getMerchantStats(m.id)
@@ -208,4 +218,9 @@ export default function MerchantsPage() {
       </Card>
     </div>
   )
-} 
+}
+
+// Export the dynamically loaded component
+export default dynamicImport(() => Promise.resolve(MerchantsPageContent), {
+  ssr: false
+}) 

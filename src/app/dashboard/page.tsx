@@ -1,5 +1,6 @@
 'use client'
 
+import dynamicImport from 'next/dynamic'
 import { DashboardLayout } from '@/components/layout/dashboard-layout'
 import { motion } from 'framer-motion'
 import {
@@ -110,7 +111,7 @@ const categoryOptions = {
   },
 }
 
-export default function DashboardPage() {
+function DashboardPage() {
   const { checkWalletConnection } = useWalletConnection()
 
   useEffect(() => {
@@ -205,3 +206,8 @@ export default function DashboardPage() {
     </DashboardLayout>
   )
 } 
+
+// Export the dynamically loaded component
+export default dynamicImport(() => Promise.resolve(DashboardPage), {
+  ssr: false
+}) 

@@ -43,6 +43,7 @@ export const useCreditLine = () => {
       date: currentDate,
       amount,
       status,
+      type,
     })
 
     if (type === 'store') {

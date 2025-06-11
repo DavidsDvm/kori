@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { useUserStore } from '@/store'
+import { useUserStore } from '@/store/user'
 import { useNotifications } from './useNotifications'
 import { useRewards } from './useRewards'
 
