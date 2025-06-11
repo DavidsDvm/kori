@@ -50,7 +50,7 @@ export function WalletConnect() {
                     <button
                       onClick={openConnectModal}
                       type="button"
-                      className="glass-button"
+                      className="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Connect Wallet
                     </button>
@@ -62,7 +62,7 @@ export function WalletConnect() {
                     <button
                       onClick={openChainModal}
                       type="button"
-                      className="glass-button bg-error-500/20 hover:bg-error-500/30"
+                      className="rounded-lg bg-red-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                     >
                       Wrong network
                     </button>
@@ -74,7 +74,7 @@ export function WalletConnect() {
                     <button
                       onClick={openChainModal}
                       type="button"
-                      className="glass-button"
+                      className="inline-flex items-center gap-x-1.5 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                     >
                       {chain.hasIcon && (
                         <div
@@ -84,7 +84,6 @@ export function WalletConnect() {
                             height: 12,
                             borderRadius: 999,
                             overflow: 'hidden',
-                            marginRight: 4,
                           }}
                         >
                           {chain.iconUrl && (
@@ -102,7 +101,7 @@ export function WalletConnect() {
                     <button
                       onClick={openAccountModal}
                       type="button"
-                      className="glass-button"
+                      className="inline-flex items-center gap-x-1.5 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                     >
                       {account.displayName}
                       {account.displayBalance
