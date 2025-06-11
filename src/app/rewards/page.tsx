@@ -8,10 +8,11 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { Gift, Coins, TrendingUp } from 'lucide-react'
+import { useWallet } from '@/hooks/useWallet'
 
 export default function RewardsPage() {
   const router = useRouter()
-  const { user } = useUserStore()
+  const { isConnected } = useWallet()
   const {
     rewards,
     getRewardsStats,
@@ -20,12 +21,12 @@ export default function RewardsPage() {
   } = useRewards()
 
   useEffect(() => {
-    if (!user) {
+    if (!isConnected) {
       router.push('/')
     }
-  }, [user, router])
+  }, [isConnected, router])
 
-  if (!user) {
+  if (!isConnected) {
     return null
   }
 

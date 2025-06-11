@@ -8,6 +8,7 @@ import { mainnet } from 'viem/chains'
 import { http } from 'viem'
 import { useEffect, useState } from 'react'
 
+
 export function Providers({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false)
   const [config, setConfig] = useState<any>(null)
