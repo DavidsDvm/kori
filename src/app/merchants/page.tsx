@@ -9,10 +9,6 @@ import { motion } from 'framer-motion'
 import { Store, TrendingUp, DollarSign, Clock, AlertCircle, CheckCircle2 } from 'lucide-react'
 import { useWalletConnection } from '@/hooks/useWalletConnection'
 
-// Disable pre-rendering for this page
-export const dynamic = 'force-dynamic'
-export const runtime = 'edge'
-
 function MerchantsPageContent() {
   const [mounted, setMounted] = useState(false)
   const { checkWalletConnection } = useWalletConnection()
