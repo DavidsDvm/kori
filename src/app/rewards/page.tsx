@@ -1,5 +1,6 @@
 'use client'
 
+import dynamicImport from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useUserStore } from '@/store/user'
@@ -12,7 +13,7 @@ import { Gift, Coins, TrendingUp } from 'lucide-react'
 import { useWallet } from '@/hooks/useWallet'
 import { useWalletConnection } from '@/hooks/useWalletConnection'
 
-export default function RewardsPage() {
+function RewardsPage() {
   const router = useRouter()
   const { isConnected } = useWallet()
   const { checkWalletConnection } = useWalletConnection()
@@ -134,3 +135,8 @@ export default function RewardsPage() {
     </div>
   )
 } 
+
+// Export the dynamically loaded component
+export default dynamicImport(() => Promise.resolve(RewardsPage), {
+  ssr: false
+}) 
