@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useUserStore } from '@/store/user'
 import { WalletConnect } from '@/components/wallet-connect'
@@ -71,6 +72,37 @@ export default function HomePage() {
                 </motion.div>
               </div>
             </div>
+          </div>
+          <div className="mt-16 sm:mt-24 lg:mt-0 flex items-center justify-center relative">
+            {/* Geometric Background */}
+            <div className="absolute inset-0 flex items-center justify-center -z-10">
+              <svg
+                width="800"
+                height="800"
+                viewBox="0 0 800 800"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-[120%] h-[120%]"
+              >
+                <path
+                  d="M800 0H300v250L0 400v200l300 200v0.2h200v-0.2l300-200h200V0z"
+                  fill="#4F46E5"
+                  className="opacity-10"
+                />
+                <path
+                  d="M750 50H350v200L100 375v150l250 175v0.1h150v-0.1l250-175h150V50z"
+                  fill="#4F46E5"
+                  className="opacity-5"
+                />
+              </svg>
+            </div>
+            <Image 
+              src="/images/metamask-card4x.avif" 
+              alt="metamask card" 
+              width={500} 
+              height={500}
+              className="w-full h-auto max-w-lg relative z-10"
+            />
           </div>
         </div>
       </div>
