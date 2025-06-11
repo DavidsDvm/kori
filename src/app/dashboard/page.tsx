@@ -21,6 +21,8 @@ import {
   ArcElement,
 } from 'chart.js'
 import { Line, Doughnut } from 'react-chartjs-2'
+import { useWalletConnection } from '@/hooks/useWalletConnection'
+import { useEffect } from 'react'
 
 ChartJS.register(
   CategoryScale,
@@ -109,6 +111,12 @@ const categoryOptions = {
 }
 
 export default function DashboardPage() {
+  const { checkWalletConnection } = useWalletConnection()
+
+  useEffect(() => {
+    checkWalletConnection('Dashboard')
+  }, [checkWalletConnection])
+
   return (
     <DashboardLayout>
       <div className="space-y-6">

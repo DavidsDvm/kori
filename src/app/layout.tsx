@@ -1,16 +1,19 @@
+"use client"
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Toaster } from 'react-hot-toast'
+import { useEffect } from 'react'
 
 const inter = Inter({
   subsets: ["latin"],
   variable: '--font-inter',
 });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Kori - Turn Your MetaMask Debit Card into Credit",
   description: "The on-chain engine that turns every MetaMask debit card into a true revolving credit card—while merchants get paid in seconds.",
 };
@@ -31,6 +34,28 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: '#363636',
+                color: '#fff',
+              },
+              success: {
+                duration: 3000,
+                style: {
+                  background: '#22c55e',
+                },
+              },
+              error: {
+                duration: 3000,
+                style: {
+                  background: '#ef4444',
+                },
+              },
+            }}
+          />
         </Providers>
       </body>
     </html>

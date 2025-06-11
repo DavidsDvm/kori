@@ -1,20 +1,16 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { useUserStore } from '@/store/user'
 import { useMerchantIntegration } from '@/hooks/useMerchantIntegration'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { Store, TrendingUp, DollarSign, Clock, AlertCircle, CheckCircle2 } from 'lucide-react'
-import { useWallet } from '@/hooks/useWallet'
+import { useWalletConnection } from '@/hooks/useWalletConnection'
 
 export default function MerchantsPage() {
-  const router = useRouter()
-  const { user } = useUserStore()
-  const { isConnected } = useWallet()
-  const [isLoading, setIsLoading] = useState(true)
+  const { checkWalletConnection } = useWalletConnection()
   const {
     merchants,
     getMerchantStats,
@@ -23,24 +19,8 @@ export default function MerchantsPage() {
   } = useMerchantIntegration()
 
   useEffect(() => {
-    if (!isConnected) {
-      router.push('/')
-    } else {
-      setIsLoading(false)
-    }
-  }, [isConnected, router])
-
-  if (isLoading) {
-    return (
-      <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
-    )
-  }
-
-  if (!isConnected) {
-    return null
-  }
+    checkWalletConnection('Merchants')
+  }, [checkWalletConnection])
 
   const totalSettlementFees = merchants.reduce((sum, m) => {
     const stats = getMerchantStats(m.id)

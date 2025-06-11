@@ -9,11 +9,11 @@ import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { Users, TrendingUp, Award } from 'lucide-react'
 import { toast } from 'react-hot-toast'
-import { useWallet } from '@/hooks/useWallet'
+import { useWalletConnection } from '@/hooks/useWalletConnection'
 
 export default function ReferralsPage() {
   const router = useRouter()
-  const { isConnected } = useWallet()
+  const { checkWalletConnection } = useWalletConnection()
   const {
     generateReferralCode,
     createReferral,
@@ -26,17 +26,10 @@ export default function ReferralsPage() {
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
-    if (!isConnected) {
-      router.push('/')
-    } else {
-      const code = generateReferralCode()
-      setReferralCode(code)
-    }
-  }, [isConnected, router, generateReferralCode])
-
-  if (!isConnected) {
-    return null
-  }
+    checkWalletConnection('Referrals')
+    const code = generateReferralCode()
+    setReferralCode(code)
+  }, [checkWalletConnection, generateReferralCode])
 
   const stats = getReferralStats()
   const history = getReferralHistory()

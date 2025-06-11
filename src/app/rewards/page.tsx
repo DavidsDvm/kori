@@ -1,18 +1,21 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useUserStore } from '@/store/user'
 import { useRewards } from '@/hooks/useRewards'
+import { useReferral } from '@/hooks/useReferral'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { Gift, Coins, TrendingUp } from 'lucide-react'
 import { useWallet } from '@/hooks/useWallet'
+import { useWalletConnection } from '@/hooks/useWalletConnection'
 
 export default function RewardsPage() {
   const router = useRouter()
   const { isConnected } = useWallet()
+  const { checkWalletConnection } = useWalletConnection()
   const {
     rewards,
     getRewardsStats,
@@ -20,15 +23,12 @@ export default function RewardsPage() {
     claimReward,
   } = useRewards()
 
-  useEffect(() => {
-    if (!isConnected) {
-      router.push('/')
-    }
-  }, [isConnected, router])
+  const [referralCode, setReferralCode] = useState<string | null>(null)
+  const [copied, setCopied] = useState(false)
 
-  if (!isConnected) {
-    return null
-  }
+  useEffect(() => {
+    checkWalletConnection('Rewards')
+  }, [checkWalletConnection])
 
   const stats = getRewardsStats()
   const breakdown = getRewardsBreakdown()
