@@ -1,5 +1,6 @@
 'use client'
 
+import dynamicImport from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useUserStore } from '@/store/user'
@@ -11,7 +12,7 @@ import { Users, TrendingUp, Award } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { useWalletConnection } from '@/hooks/useWalletConnection'
 
-export default function ReferralsPage() {
+function ReferralsPage() {
   const router = useRouter()
   const { checkWalletConnection } = useWalletConnection()
   const {
@@ -153,3 +154,8 @@ export default function ReferralsPage() {
     </div>
   )
 } 
+
+// Export the dynamically loaded component
+export default dynamicImport(() => Promise.resolve(ReferralsPage), {
+  ssr: false
+}) 

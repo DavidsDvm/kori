@@ -30,7 +30,7 @@
     "ethers": "^6.11.0",
     "framer-motion": "^12.16.0",
     "lucide-react": "^0.514.0",
-    "next": "14.1.0",
+    "next": "15.3.3",
     "pino-pretty": "^13.0.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.3.0",
@@ -48,7 +48,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "15.3.3",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

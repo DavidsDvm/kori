@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { WalletConnect } from './wallet-connect'
+import { WalletConnect } from '@/components/wallet-connect'
 import { useUserStore } from '@/store/user'
 import { Menu, X } from 'lucide-react'
 
