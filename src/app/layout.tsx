@@ -6,7 +6,7 @@ import { Providers } from "./providers";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Toaster } from 'react-hot-toast'
-import { useEffect } from 'react'
+import FlashToastEffect from "@/components/layout/flash-toast-effect";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,6 +27,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className={`${inter.className} h-full bg-white`}>
         <Providers>
+          <FlashToastEffect />
           <div className="min-h-full">
             <Navbar />
             <main className="pt-16">
