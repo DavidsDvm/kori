@@ -1135,10 +1135,10 @@ export default function HomePage() {
           ease: "power2.out"
         }, "-=0.3")
 
-      // Individual floating animation for each card (very subtle)
+      // Individual floating animation for each card (no vertical movement)
       gsap.to(card, {
-        y: -1.5,
-        rotation: index % 2 === 0 ? 0.2 : -0.2,
+        rotation: index % 2 === 0 ? 0.3 : -0.3,
+        x: index % 2 === 0 ? 1 : -1,
         duration: 8 + index * 0.5,
         ease: "power1.inOut",
         repeat: -1,
@@ -1208,11 +1208,12 @@ export default function HomePage() {
       })
     })
 
-    // Parallax effect for feature animations (very subtle)
+    // Parallax effect for feature animations (horizontal only)
     gsap.utils.toArray(".feature-animation").forEach((animation: any, index) => {
       gsap.to(animation, {
-        y: -4,
-        duration: 10 + index,
+        x: index % 2 === 0 ? 2 : -2,
+        rotation: index % 2 === 0 ? 1 : -1,
+        duration: 12 + index,
         ease: "power1.inOut",
         repeat: -1,
         yoyo: true,
