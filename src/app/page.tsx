@@ -26,7 +26,7 @@ const CreditCardNetwork = ({ className = "" }: { className?: string }) => {
         width="100"
         height="60"
         rx="8"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="2"
         fill="none"
         initial={{ opacity: 0, scale: 0 }}
@@ -41,7 +41,7 @@ const CreditCardNetwork = ({ className = "" }: { className?: string }) => {
         width="15"
         height="12"
         rx="2"
-        fill="#FFB087"
+        fill="#6366f1"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
@@ -55,7 +55,7 @@ const CreditCardNetwork = ({ className = "" }: { className?: string }) => {
           y1={145 + i * 8}
           x2="180"
           y2={145 + i * 8}
-          stroke="#FFB087"
+          stroke="#6366f1"
           strokeWidth="1.5"
           opacity="0.7"
           initial={{ pathLength: 0 }}
@@ -76,7 +76,7 @@ const CreditCardNetwork = ({ className = "" }: { className?: string }) => {
             cx={node.x}
             cy={node.y}
             r="8"
-            fill="#FFB087"
+            fill="#6366f1"
             opacity="0.6"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -87,7 +87,7 @@ const CreditCardNetwork = ({ className = "" }: { className?: string }) => {
             y1="150"
             x2={node.x}
             y2={node.y}
-            stroke="#FFB087"
+            stroke="#6366f1"
             strokeWidth="1"
             opacity="0.4"
             initial={{ pathLength: 0 }}
@@ -104,7 +104,7 @@ const CreditCardNetwork = ({ className = "" }: { className?: string }) => {
           cx="150"
           cy="150"
           r="30"
-          stroke="#FFB087"
+          stroke="#6366f1"
           strokeWidth="1"
           fill="none"
           opacity="0"
@@ -142,7 +142,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
         width="40"
         height="40"
         rx="4"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="2"
         fill="none"
         initial={{ opacity: 0, x: -20 }}
@@ -153,7 +153,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
       {/* Store icon */}
       <motion.path
         d="M60 135 L70 125 L80 135 V155 H60 V135Z"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="1.5"
         fill="none"
         initial={{ pathLength: 0 }}
@@ -168,7 +168,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
         width="40"
         height="40"
         rx="4"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="2"
         fill="none"
         initial={{ opacity: 0, x: 20 }}
@@ -183,7 +183,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
         width="20"
         height="15"
         rx="2"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="1.5"
         fill="none"
         initial={{ pathLength: 0 }}
@@ -194,7 +194,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
       {/* Payment flow arrows */}
       <motion.path
         d="M95 140 Q150 120 205 140"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="2"
         fill="none"
         markerEnd="url(#arrowhead)"
@@ -206,7 +206,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
       {/* USDC settlement arrow */}
       <motion.path
         d="M205 145 Q150 165 95 145"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="2"
         fill="none"
         strokeDasharray="5,5"
@@ -221,7 +221,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
         x="150"
         y="175"
         textAnchor="middle"
-        fill="#FFB087"
+        fill="#6366f1"
         fontSize="12"
         fontWeight="600"
         initial={{ opacity: 0 }}
@@ -236,7 +236,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
         <motion.circle
           key={i}
           r="3"
-          fill="#FFB087"
+          fill="#6366f1"
           opacity="0.8"
           animate={{
             cx: [95, 150, 205, 95],
@@ -263,7 +263,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
         >
           <polygon
             points="0 0, 10 3.5, 0 7"
-            fill="#FFB087"
+            fill="#6366f1"
           />
         </marker>
       </defs>
@@ -276,7 +276,7 @@ const PaymentFlow = ({ className = "" }: { className?: string }) => {
           y1="100"
           x2={125 + i * 10}
           y2="90"
-          stroke="#FFB087"
+          stroke="#6366f1"
           strokeWidth="2"
           opacity="0.6"
           initial={{ scaleY: 0 }}
@@ -311,7 +311,7 @@ const CreditScoreChart = ({ className = "" }: { className?: string }) => {
         y1="50"
         x2="50"
         y2="250"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="2"
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
@@ -322,7 +322,7 @@ const CreditScoreChart = ({ className = "" }: { className?: string }) => {
         y1="250"
         x2="250"
         y2="250"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="2"
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
@@ -342,7 +342,7 @@ const CreditScoreChart = ({ className = "" }: { className?: string }) => {
           y={250 - bar.height}
           width="25"
           height={bar.height}
-          fill="#FFB087"
+          fill="#6366f1"
           opacity="0.7"
           initial={{ height: 0, y: 250 }}
           animate={{ height: bar.height, y: 250 - bar.height }}
@@ -353,7 +353,7 @@ const CreditScoreChart = ({ className = "" }: { className?: string }) => {
       {/* Trend line */}
       <motion.path
         d="M80 190 L120 150 L160 110 L200 70"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="3"
         fill="none"
         initial={{ pathLength: 0 }}
@@ -373,7 +373,7 @@ const CreditScoreChart = ({ className = "" }: { className?: string }) => {
           cx={point.x}
           cy={point.y}
           r="5"
-          fill="#FFB087"
+          fill="#6366f1"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.5, delay: 2.5 + i * 0.2 }}
@@ -387,7 +387,7 @@ const CreditScoreChart = ({ className = "" }: { className?: string }) => {
           x={80 + i * 40}
           y={270}
           textAnchor="middle"
-          fill="#FFB087"
+          fill="#6366f1"
           fontSize="12"
           fontWeight="600"
           initial={{ opacity: 0 }}
@@ -401,7 +401,7 @@ const CreditScoreChart = ({ className = "" }: { className?: string }) => {
       {/* Upward arrow */}
       <motion.path
         d="M220 60 L230 50 L240 60 M230 50 V90"
-        stroke="#FFB087"
+        stroke="#6366f1"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -411,26 +411,31 @@ const CreditScoreChart = ({ className = "" }: { className?: string }) => {
       />
 
       {/* Success particles */}
-      {[...Array(8)].map((_, i) => (
-        <motion.circle
-          key={i}
-          cx={230 + (i % 2 ? 1 : -1) * Math.random() * 20}
-          cy={40 + Math.random() * 20}
-          r="2"
-          fill="#FFB087"
-          opacity="0.8"
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.8, 0, 0.8],
-          }}
-          transition={{
-            duration: 2,
-            delay: 4 + i * 0.2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      ))}
+      {[...Array(8)].map((_, i) => {
+        // Deterministic positioning based on index
+        const offsetX = (i % 2 ? 1 : -1) * ((i % 4) * 5 + 5);
+        const offsetY = (i % 3) * 7;
+        return (
+          <motion.circle
+            key={i}
+            cx={230 + offsetX}
+            cy={40 + offsetY}
+            r="2"
+            fill="#6366f1"
+            opacity="0.8"
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.8, 0, 0.8],
+            }}
+            transition={{
+              duration: 2,
+              delay: 4 + i * 0.2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        );
+      })}
     </svg>
   )
 }
@@ -604,7 +609,7 @@ export default function HomePage() {
           </svg>
         </motion.div>
 
-        {/* Enhanced Features Section with MetaMask Aesthetic */}
+        {/* Enhanced Features Section*/}
         <div ref={containerRef} id="features" className="py-24 sm:py-32 bg-gradient-to-b from-gray-50 via-gray-100 to-white relative overflow-hidden">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             {/* Enhanced Deploy Faster Section */}
@@ -675,6 +680,8 @@ export default function HomePage() {
                   <p className="text-xl leading-8 text-gray-600 font-medium">
                     Kori provides a complete solution for converting MetaMask debit cards into credit cards while ensuring instant merchant payments.
                   </p>
+                  
+                  {/* Feature highlights */}
                 </motion.div>
 
                 {/* Decorative elements */}
@@ -697,15 +704,15 @@ export default function HomePage() {
                       viewport={{ once: true }}
                       onHoverStart={() => setHoveredFeature(index)}
                       onHoverEnd={() => setHoveredFeature(null)}
-                      className={`group relative overflow-hidden rounded-2xl bg-[#15005C] p-6 shadow-2xl border border-[#2D1B69] transition-all duration-500 ease-in-out will-change-transform ${
+                      className={`group relative overflow-hidden rounded-2xl bg-indigo-950 p-6 shadow-2xl border transition-all duration-500 ease-in-out will-change-transform h-[280px] ${
                         isHovered 
-                          ? 'border-[#FFB087] w-full lg:w-[500px]' 
+                          ? 'border-indigo-400 w-full lg:w-[500px]' 
                           : isOtherHovered 
                             ? 'opacity-80 w-full lg:w-[250px]' 
-                            : 'hover:border-[#FFB087] w-full lg:w-[300px]'
+                            : 'hover:border-indigo-400 border-indigo-800 w-full lg:w-[300px]'
                       }`}
                       style={{
-                        backgroundImage: 'radial-gradient(ellipse at center, rgba(255, 176, 135, 0.05) 0%, transparent 70%)'
+                        backgroundImage: 'radial-gradient(ellipse at center, rgba(99, 102, 241, 0.05) 0%, transparent 70%)'
                       }}
                       transition={{
                         duration: isHovered || isOtherHovered ? 0.4 : 0.6,
@@ -726,33 +733,37 @@ export default function HomePage() {
 
                       {/* Glow Effect */}
                       <div className={`absolute inset-0 rounded-2xl transition-opacity duration-500 pointer-events-none ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-                        <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_20px_rgba(255,176,135,0.3)] ring-1 ring-[#FFB087]/30" />
+                        <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_20px_rgba(99,102,241,0.3)] ring-1 ring-indigo-400/30" />
                       </div>
 
                       {/* Content */}
                       <div className="relative z-10 h-full flex flex-col">
-                        <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-white group-hover:text-slate-200 transition-colors duration-300">
-                          <motion.div
-                            whileHover={{ 
-                              rotate: 360,
-                              scale: 1.2,
-                            }}
-                            transition={{ duration: 0.5 }}
-                            className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#FFB087] transition-colors duration-300 hover:bg-[#FF9A66] flex-shrink-0"
-                          >
-                            <feature.icon
-                              className="h-6 w-6 text-[#15005C]"
-                              aria-hidden="true"
-                            />
-                          </motion.div>
-                          <span className={`transition-all duration-300 ${isHovered ? 'text-lg' : ''}`}>
-                            {feature.title}
-                          </span>
-                        </dt>
+                        {/* Title Section - Fixed Height */}
+                        <div className="h-[70px] flex items-start">
+                          <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-white group-hover:text-slate-200 transition-colors duration-300">
+                            <motion.div
+                              whileHover={{ 
+                                rotate: 360,
+                                scale: 1.2,
+                              }}
+                              transition={{ duration: 0.5 }}
+                              className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500 transition-colors duration-300 hover:bg-indigo-400 flex-shrink-0"
+                            >
+                              <feature.icon
+                                className="h-6 w-6 text-white"
+                                aria-hidden="true"
+                              />
+                            </motion.div>
+                            <span className={`transition-all duration-300 ${isHovered ? 'text-lg' : ''}`}>
+                              {feature.title}
+                            </span>
+                          </dt>
+                        </div>
                         
-                        <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-slate-200 group-hover:text-white transition-colors duration-300">
+                        {/* Content Section - Flexible Height */}
+                        <dd className="flex flex-auto flex-col text-base leading-7 text-slate-200 group-hover:text-white transition-colors duration-300">
                           {/* Base description - hidden on hover */}
-                          <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                          <div className={`overflow-hidden transition-all duration-500 ease-in-out flex-1 ${
                             isHovered 
                               ? 'max-h-0 opacity-0' 
                               : 'max-h-32 opacity-100'
@@ -765,23 +776,23 @@ export default function HomePage() {
                           {/* Key Benefits - only visible on hover */}
                           <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
                             isHovered 
-                              ? 'max-h-48 opacity-100 flex-auto' 
+                              ? 'max-h-48 opacity-100 flex-1' 
                               : 'max-h-0 opacity-0'
                           }`}>
                             <div className="text-sm text-slate-300 leading-relaxed space-y-3">
-                              <p className="font-semibold text-[#FFB087] text-base">Key Benefits</p>
+                              <p className="font-semibold text-indigo-300 text-base">Key Benefits</p>
                               {index === 0 && (
                                 <ul className="space-y-2 text-sm">
                                   <li className="flex items-start gap-2">
-                                    <span className="text-[#FFB087] font-bold">•</span>
+                                    <span className="text-indigo-400 font-bold">•</span>
                                     <span>Seamless blockchain integration</span>
                                   </li>
                                   <li className="flex items-start gap-2">
-                                    <span className="text-[#FFB087] font-bold">•</span>
+                                    <span className="text-indigo-400 font-bold">•</span>
                                     <span>Maintains existing spending habits</span>
                                   </li>
                                   <li className="flex items-start gap-2">
-                                    <span className="text-[#FFB087] font-bold">•</span>
+                                    <span className="text-indigo-400 font-bold">•</span>
                                     <span>Builds credit history automatically</span>
                                   </li>
                                 </ul>
@@ -789,15 +800,15 @@ export default function HomePage() {
                               {index === 1 && (
                                 <ul className="space-y-2 text-sm">
                                   <li className="flex items-start gap-2">
-                                    <span className="text-[#FFB087] font-bold">•</span>
+                                    <span className="text-indigo-400 font-bold">•</span>
                                     <span>Eliminates payment waiting periods</span>
                                   </li>
                                   <li className="flex items-start gap-2">
-                                    <span className="text-[#FFB087] font-bold">•</span>
+                                    <span className="text-indigo-400 font-bold">•</span>
                                     <span>Immediate USDC settlements</span>
                                   </li>
                                   <li className="flex items-start gap-2">
-                                    <span className="text-[#FFB087] font-bold">•</span>
+                                    <span className="text-indigo-400 font-bold">•</span>
                                     <span>Improved merchant cash flow</span>
                                   </li>
                                 </ul>
@@ -805,33 +816,33 @@ export default function HomePage() {
                               {index === 2 && (
                                 <ul className="space-y-2 text-sm">
                                   <li className="flex items-start gap-2">
-                                    <span className="text-[#FFB087] font-bold">•</span>
+                                    <span className="text-indigo-400 font-bold">•</span>
                                     <span>Partnership with major credit bureaus</span>
                                   </li>
                                   <li className="flex items-start gap-2">
-                                    <span className="text-[#FFB087] font-bold">•</span>
+                                    <span className="text-indigo-400 font-bold">•</span>
                                     <span>Every transaction builds profile</span>
                                   </li>
                                   <li className="flex items-start gap-2">
-                                    <span className="text-[#FFB087] font-bold">•</span>
+                                    <span className="text-indigo-400 font-bold">•</span>
                                     <span>Establishes financial standing</span>
                                   </li>
                                 </ul>
                               )}
                             </div>
                           </div>
-                          
-                          {/* Learn more link */}
-                          <div className={`transition-all duration-300 ${isHovered ? 'mt-6' : 'mt-6'}`}>
-                            <a
-                              href="#"
-                              className="text-sm font-semibold leading-6 text-[#FFB087] transition-all duration-300 hover:text-[#FF9A66] inline-flex items-center gap-1 hover:gap-2"
-                            >
-                              <span>Learn more</span>
-                              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                            </a>
-                          </div>
                         </dd>
+                        
+                        {/* Learn More Link - Fixed Position at Bottom */}
+                        <div className="mt-auto pt-4">
+                          <a
+                            href="#"
+                            className="text-sm font-semibold leading-6 text-indigo-400 transition-all duration-300 hover:text-indigo-300 inline-flex items-center gap-1 hover:gap-2"
+                          >
+                            <span>Learn more</span>
+                            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                          </a>
+                        </div>
                       </div>
 
                       {/* Subtle Inner Shadow for Depth */}
@@ -866,7 +877,7 @@ export default function HomePage() {
               <WalletConnect />
               <a
                 href="#"
-                className="text-sm font-semibell leading-6 text-white"
+                className="text-sm font-semibold leading-6 text-white"
               >
                 Learn more <span aria-hidden="true">→</span>
               </a>
@@ -880,13 +891,13 @@ export default function HomePage() {
                 cx={512}
                 cy={512}
                 r={512}
-                fill="url(#827591b1-ce8c-4110-b064-7cb85a0b1217)"
+                fill="url(#indigo-gradient)"
                 fillOpacity="0.7"
               />
               <defs>
-                <radialGradient id="827591b1-ce8c-4110-b064-7cb85a0b1217">
-                  <stop stopColor="#7775D6" />
-                  <stop offset={1} stopColor="#E935C1" />
+                <radialGradient id="indigo-gradient">
+                  <stop stopColor="#6366f1" />
+                  <stop offset={1} stopColor="#4338ca" />
                 </radialGradient>
               </defs>
             </svg>
