@@ -513,8 +513,15 @@ export default function HomePage() {
 
     // Tier header animation
     tierTl
-      .from("#tier-header h2", { y: 50, opacity: 0, duration: 0.8, ease: "power3.out" })
-      .from("#tier-header p", { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.4")
+      .fromTo("#tier-header h2", 
+        { y: 50, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+      )
+      .fromTo("#tier-header p", 
+        { y: 30, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 
+        "-=0.4"
+      )
 
     // Floating card animation
     const cardTl = gsap.timeline({
@@ -1063,41 +1070,7 @@ export default function HomePage() {
       })
     })
 
-    // Tier progression flow animation
-    const tierProgressFlow = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#tier-header",
-        start: "top 70%",
-        toggleActions: "play none none reverse"
-      }
-    })
 
-    tierProgressFlow
-      .from("#tier-header .inline-flex", { 
-        scale: 0, 
-        opacity: 0, 
-        duration: 0.6, 
-        ease: "back.out(2)" 
-      })
-      .from("#tier-header h2", { 
-        y: 30, 
-        opacity: 0, 
-        duration: 0.8, 
-        ease: "power3.out" 
-      }, "-=0.3")
-      .from("#tier-header p", { 
-        y: 20, 
-        opacity: 0, 
-        duration: 0.6, 
-        ease: "power2.out" 
-      }, "-=0.4")
-      .from("#tier-header .flex.items-center > *", { 
-        scale: 0, 
-        opacity: 0, 
-        duration: 0.4, 
-        stagger: 0.1, 
-        ease: "back.out(2)" 
-      }, "-=0.2")
 
     // Section transition animations
     const sections = gsap.utils.toArray("section")
@@ -1122,6 +1095,129 @@ export default function HomePage() {
           }
         }
       )
+    })
+
+    // Enhanced Features section animations
+    const featureCards = gsap.utils.toArray(".feature-card")
+    
+    // Set initial state
+    gsap.set(".feature-card", { 
+      opacity: 0, 
+      y: 100, 
+      scale: 0.8,
+      rotationY: 15
+    })
+
+    // Create main timeline for features
+    const featuresTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#features-container",
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      }
+    })
+
+    // Animate cards in sequence with dramatic effect
+    featureCards.forEach((card: any, index) => {
+      featuresTl
+        .to(card, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotationY: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+          delay: index * 0.2
+        })
+        .to(card, {
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+          duration: 0.3,
+          ease: "power2.out"
+        }, "-=0.3")
+
+      // Individual floating animation for each card (very subtle)
+      gsap.to(card, {
+        y: -1.5,
+        rotation: index % 2 === 0 ? 0.2 : -0.2,
+        duration: 8 + index * 0.5,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: index * 1.2
+      })
+
+      // Glow effect animation (more subtle)
+      gsap.to(card, {
+        filter: "drop-shadow(0 0 15px rgba(99, 102, 241, 0.2))",
+        duration: 4,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: index * 1.5
+      })
+
+      // Mouse enter/leave enhanced animations
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          scale: 1.08,
+          rotationY: 5,
+          z: 50,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+        
+        // Animate the background animation
+        gsap.to(card.querySelector('.feature-animation'), {
+          scale: 1.1,
+          rotation: 5,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+
+        // Pulse effect on icon
+        gsap.to(card.querySelector('.feature-icon'), {
+          scale: 1.2,
+          rotation: 360,
+          duration: 0.6,
+          ease: "back.out(2)"
+        })
+      })
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          scale: 1,
+          rotationY: 0,
+          z: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+
+        gsap.to(card.querySelector('.feature-animation'), {
+          scale: 1,
+          rotation: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+
+        gsap.to(card.querySelector('.feature-icon'), {
+          scale: 1,
+          rotation: 0,
+          duration: 0.4,
+          ease: "power2.out"
+        })
+      })
+    })
+
+    // Parallax effect for feature animations (very subtle)
+    gsap.utils.toArray(".feature-animation").forEach((animation: any, index) => {
+      gsap.to(animation, {
+        y: -4,
+        duration: 10 + index,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: index * 0.8
+      })
     })
 
     // Cleanup function
@@ -1427,38 +1523,30 @@ export default function HomePage() {
             </div>
 
             <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-4 justify-center items-stretch overflow-hidden">
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-6 justify-center items-stretch" id="features-container">
                 {features.map((feature, index) => {
                   const isHovered = hoveredFeature === index
                   const isOtherHovered = hoveredFeature !== null && hoveredFeature !== index
 
                   return (
-            <motion.div
+            <div
                       key={feature.title}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      onHoverStart={() => setHoveredFeature(index)}
-                      onHoverEnd={() => setHoveredFeature(null)}
-                      className={`group relative overflow-hidden rounded-2xl bg-indigo-950 p-6 shadow-2xl border transition-all duration-500 ease-in-out will-change-transform h-[280px] ${
+                      onMouseEnter={() => setHoveredFeature(index)}
+                      onMouseLeave={() => setHoveredFeature(null)}
+                      className={`feature-card feature-card-${index} group relative overflow-hidden rounded-2xl bg-indigo-950 p-6 shadow-2xl border transition-all duration-300 ease-in-out will-change-transform min-h-[320px] ${
                         isHovered 
-                          ? 'border-indigo-400 w-full lg:w-[500px]' 
+                          ? 'border-indigo-400 w-full lg:w-[400px] scale-105' 
                           : isOtherHovered 
-                            ? 'opacity-80 w-full lg:w-[250px]' 
-                            : 'hover:border-indigo-400 border-indigo-800 w-full lg:w-[300px]'
+                            ? 'opacity-70 w-full lg:w-[280px]' 
+                            : 'hover:border-indigo-400 border-indigo-800 w-full lg:w-[320px]'
                       }`}
                       style={{
                         backgroundImage: 'radial-gradient(ellipse at center, rgba(99, 102, 241, 0.05) 0%, transparent 70%)'
               }}
-              transition={{ 
-                        duration: isHovered || isOtherHovered ? 0.4 : 0.6,
-                        delay: isHovered || isOtherHovered ? 0 : index * 0.2,
-                ease: "easeInOut"
-              }}
             >
                       {/* Enhanced Background Animation - Shifts to Right Side on Hover */}
                       <div
-                        className={`absolute flex items-center justify-center mix-blend-screen pointer-events-none transition-all duration-500 ease-in-out ${
+                        className={`feature-animation absolute flex items-center justify-center mix-blend-screen pointer-events-none transition-all duration-500 ease-in-out ${
                           isHovered 
                             ? 'right-4 top-1/2 -translate-y-1/2 opacity-50 scale-90 translate-x-2' 
                             : 'inset-0 opacity-20 scale-75'
@@ -1475,22 +1563,15 @@ export default function HomePage() {
                       {/* Content */}
                       <div className="relative z-10 h-full flex flex-col">
                         {/* Title Section - Fixed Height */}
-                        <div className="h-[70px] flex items-start">
+                        <div className="h-[80px] flex items-start">
                           <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-white group-hover:text-slate-200 transition-colors duration-300">
-                            <motion.div
-                              whileHover={{ 
-                                rotate: 360,
-                                scale: 1.2,
-                              }}
-                              transition={{ duration: 0.5 }}
-                              className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500 transition-colors duration-300 hover:bg-indigo-400 flex-shrink-0"
-                            >
+                            <div className="feature-icon flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500 transition-all duration-300 hover:bg-indigo-400 flex-shrink-0 group-hover:scale-110">
                               <feature.icon
                                 className="h-6 w-6 text-white"
                                 aria-hidden="true"
-              />
-            </motion.div>
-                            <span className={`transition-all duration-300 ${isHovered ? 'text-lg' : ''}`}>
+                              />
+                            </div>
+                            <span className={`transition-all duration-300 font-bold ${isHovered ? 'text-lg text-indigo-200' : 'text-white'}`}>
                               {feature.title}
                             </span>
                           </dt>
@@ -1499,18 +1580,18 @@ export default function HomePage() {
                         {/* Content Section - Flexible Height */}
                         <dd className="flex flex-auto flex-col text-base leading-7 text-slate-200 group-hover:text-white transition-colors duration-300">
                           {/* Base description - hidden on hover */}
-                          <div className={`overflow-hidden transition-all duration-500 ease-in-out flex-1 ${
+                          <div className={`overflow-hidden transition-all duration-400 ease-in-out ${
                             isHovered 
                               ? 'max-h-0 opacity-0' 
                               : 'max-h-32 opacity-100'
                           }`}>
-                            <p className="text-base">
+                            <p className="text-base text-slate-300">
                               {feature.description}
                             </p>
                           </div>
                           
                           {/* Key Benefits - only visible on hover */}
-                          <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                          <div className={`overflow-hidden transition-all duration-400 ease-in-out ${
                             isHovered 
                               ? 'max-h-48 opacity-100 flex-1' 
                               : 'max-h-0 opacity-0'
@@ -1583,7 +1664,7 @@ export default function HomePage() {
 
                       {/* Subtle Inner Shadow for Depth */}
                       <div className="absolute inset-0 rounded-2xl shadow-[inset_0_2px_10px_rgba(0,0,0,0.3)] pointer-events-none" />
-                </motion.div>
+                </div>
                   )
                 })}
               </div>
@@ -1648,52 +1729,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Floating MetaMask Card as Centerpiece */}
-          <div className="mt-16 sm:mt-24 lg:mt-0 flex items-center justify-center relative mb-20" id="floating-card">
-            {/* Geometric Background */}
-            <div 
-              className="absolute inset-0 flex items-center justify-center -z-10"
-            >
-              <svg
-                width="800"
-                height="800"
-                viewBox="0 0 800 800"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-[120%] h-[120%]"
-              >
-                <path
-                  d="M800 0H300v250L0 400v200l300 200v0.2h200v-0.2l300-200h200V0z"
-                  fill="#4F46E5"
-                  className="opacity-10"
-                />
-                <path
-                  d="M750 50H350v200L100 375v150l250 175v0.1h150v-0.1l250-175h150V50z"
-                  fill="#4F46E5"
-                  className="opacity-5"
-                />
-              </svg>
-            </div>
-            <motion.div
-              animate={{ 
-                y: [0, -15, 0],
-                scale: [1, 1.02, 1]
-              }}
-              transition={{ 
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <Image 
-                src="/images/metamask-card4x.avif" 
-                alt="metamask card" 
-                width={500} 
-                height={500}
-                className="w-full h-auto max-w-lg relative z-10"
-              />
-            </motion.div>
-          </div>
+
 
                     {/* Enhanced Tier Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6" id="tier-cards">
@@ -1881,24 +1917,24 @@ export default function HomePage() {
                 title: 'Connect & Scan',
                 description: 'Link your MetaMask wallet and authorize our oracle to scan your on-chain activity and debit card usage patterns.',
                 icon: Wallet,
-                color: 'from-blue-500 to-indigo-600',
-                bgColor: 'from-blue-50 to-indigo-100'
+                color: 'from-indigo-500 to-indigo-600',
+                bgColor: 'from-indigo-50 to-indigo-100'
               },
               {
                 step: '02', 
                 title: 'Get Scored',
                 description: 'Our AI analyzes 200+ variables to generate your KoriScore and unlock your initial credit tier instantly.',
                 icon: Brain,
-                color: 'from-purple-500 to-pink-600',
-                bgColor: 'from-purple-50 to-pink-100'
+                color: 'from-purple-500 to-purple-600',
+                bgColor: 'from-purple-50 to-purple-100'
               },
               {
                 step: '03',
                 title: 'Spend & Build',
                 description: 'Use your credit at partner stores, repay on time, and watch your score climb through our tier system.',
                 icon: ChartBar,
-                color: 'from-emerald-500 to-green-600',
-                bgColor: 'from-emerald-50 to-green-100'
+                color: 'from-indigo-600 to-purple-600',
+                bgColor: 'from-indigo-50 to-purple-100'
               }
             ].map((step, index) => (
               <div
@@ -1959,11 +1995,11 @@ export default function HomePage() {
           {/* Call to Action */}
           <div className="text-center mt-16">
             <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-gray-200">
-              <div className="flex -space-x-2">
-                {[1,2,3].map((i) => (
-                  <div key={i} className={`w-8 h-8 rounded-full bg-gradient-to-r ${['from-blue-400 to-indigo-500', 'from-purple-400 to-pink-500', 'from-emerald-400 to-green-500'][i-1]} border-2 border-white`} />
-                ))}
-              </div>
+                             <div className="flex -space-x-2">
+                 {[1,2,3].map((i) => (
+                   <div key={i} className={`w-8 h-8 rounded-full bg-gradient-to-r ${['from-indigo-400 to-indigo-500', 'from-purple-400 to-purple-500', 'from-indigo-500 to-purple-500'][i-1]} border-2 border-white`} />
+                 ))}
+               </div>
               <p className="text-sm font-medium text-gray-700">
                 Join <span className="font-bold text-indigo-600">50,000+</span> users building their credit with Kori
               </p>
@@ -2040,9 +2076,9 @@ export default function HomePage() {
               
               <div className="space-y-6" id="business-metrics">
                 {[
-                  { title: 'Instant Payout Fee', value: '1', suffix: '%', description: 'Of every merchant settlement', color: 'from-emerald-400 to-green-500', delay: 0 },
-                  { title: 'Interchange Share', value: '0.6', suffix: '%', prefix: '~', description: 'On card-rail transactions', color: 'from-blue-400 to-cyan-500', delay: 0.1 },
-                  { title: 'Credit Spread', value: '7', suffix: '%', description: 'Borrow at 5%, lend at 12%', color: 'from-purple-400 to-pink-500', delay: 0.2 },
+                  { title: 'Instant Payout Fee', value: '1', suffix: '%', description: 'Of every merchant settlement', color: 'from-indigo-400 to-indigo-500', delay: 0 },
+                                      { title: 'Interchange Share', value: '0.6', suffix: '%', prefix: '~', description: 'On card-rail transactions', color: 'from-indigo-500 to-purple-500', delay: 0.1 },
+                    { title: 'Credit Spread', value: '7', suffix: '%', description: 'Borrow at 5%, lend at 12%', color: 'from-purple-400 to-purple-500', delay: 0.2 },
                   { title: 'Float Yield', value: '4.5', suffix: '%', prefix: '', description: 'USDC in T-bill backed funds', color: 'from-indigo-400 to-purple-500', delay: 0.3 }
                 ].map((item, index) => (
                   <div
@@ -2113,13 +2149,13 @@ export default function HomePage() {
                          <feature.icon className="w-5 h-5 text-indigo-300" />
                        </div>
                        <div className="flex items-center gap-3 flex-1">
-                         <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 business-feature-check" />
+                         <CheckCircle className="w-5 h-5 text-indigo-400 flex-shrink-0 business-feature-check" />
                          <span className="text-gray-300 group-hover:text-white transition-colors duration-300 business-feature-text">{feature.text}</span>
                        </div>
                        
                        {/* Feature Progress Bar */}
                        <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
-                         <div className={`business-feature-progress business-feature-progress-${index} h-full bg-green-400 w-0 transition-all duration-1000 ease-out`} />
+                         <div className={`business-feature-progress business-feature-progress-${index} h-full bg-indigo-400 w-0 transition-all duration-1000 ease-out`} />
                        </div>
                      </div>
                    ))}
@@ -2128,15 +2164,15 @@ export default function HomePage() {
                 {/* Enhanced Visual Elements */}
                 <div className="mt-8 pt-6 border-t border-white/10">
                   <div className="flex items-center justify-center gap-8">
-                    <div className="text-center business-risk-stat">
-                      <div className="text-3xl font-bold text-green-400" id="risk-percentage">0%</div>
-                      <div className="text-sm text-gray-400">Default Rate</div>
-                    </div>
-                    <div className="w-px h-12 bg-white/20" />
-                    <div className="text-center business-risk-stat">
-                      <div className="text-3xl font-bold text-blue-400" id="accuracy-percentage">0%</div>
-                      <div className="text-sm text-gray-400">AI Accuracy</div>
-                    </div>
+                                         <div className="text-center business-risk-stat">
+                       <div className="text-3xl font-bold text-indigo-400" id="risk-percentage">0%</div>
+                       <div className="text-sm text-gray-400">Default Rate</div>
+                     </div>
+                     <div className="w-px h-12 bg-white/20" />
+                     <div className="text-center business-risk-stat">
+                       <div className="text-3xl font-bold text-purple-400" id="accuracy-percentage">0%</div>
+                       <div className="text-sm text-gray-400">AI Accuracy</div>
+                     </div>
                   </div>
                 </div>
               </div>
@@ -2148,7 +2184,7 @@ export default function HomePage() {
       {/* CTA Section */}
       <div className="bg-white">
         <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
+          <div className="relative isolate overflow-hidden bg-gradient-to-br from-indigo-900 via-indigo-800 to-purple-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -2181,12 +2217,12 @@ export default function HomePage() {
                 cy={512}
                 r={512}
                 fill="url(#indigo-gradient)"
-                fillOpacity="0.7"
+                fillOpacity="0.3"
               />
               <defs>
                 <radialGradient id="indigo-gradient">
                   <stop stopColor="#6366f1" />
-                  <stop offset={1} stopColor="#4338ca" />
+                  <stop offset={1} stopColor="#8b5cf6" />
                 </radialGradient>
               </defs>
             </svg>
