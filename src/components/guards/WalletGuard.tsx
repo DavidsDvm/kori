@@ -1,30 +1,25 @@
-'use client'
+'use client';
+import { useEffect } from 'react';
+import { useAccount } from 'wagmi';
+import { useRouter, usePathname } from 'next/navigation';
+import { useFlashToast } from '@/store/flashToastStore';
 
-import { useAccount } from 'wagmi'
-import { useRouter, usePathname } from 'next/navigation'
-import { useEffect } from 'react'
-import { toast } from 'react-hot-toast'
-
-interface WalletGuardProps {
-  children: React.ReactNode
-}
-
-export function WalletGuard({ children }: WalletGuardProps) {
-  const { isConnected } = useAccount()
-  const router = useRouter()
-  const pathname = usePathname()
+export function WalletGuard({ children }: { children: React.ReactNode }) {
+  const { isConnected } = useAccount();
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!isConnected) {
-      const pageName = pathname.split('/').pop() || 'this page'
-      toast.error(`Please connect your wallet to access ${pageName}`)
-      router.replace('/')
+      const pageName = pathname.split('/').pop() || 'this page';
+      // save the message globally
+      useFlashToast.getState().set(
+        `Please connect your wallet to access “${pageName}”`,
+        'error'
+      );
+      router.back();
     }
-  }, [isConnected, router, pathname])
+  }, [isConnected, pathname, router]);
 
-  if (!isConnected) {
-    return null
-  }
-
-  return <>{children}</>
-} 
+  return isConnected ? <>{children}</> : null;
+}
