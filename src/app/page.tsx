@@ -110,7 +110,7 @@ export default function HomePage() {
               }}
             >
               <Image 
-                src="images/metamask-card4x.avif" 
+                src="/images/metamask-card4x.avif" 
                 alt="metamask card" 
                 width={500} 
                 height={500}
