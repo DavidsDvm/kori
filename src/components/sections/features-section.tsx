@@ -2,11 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-<<<<<<< Updated upstream
-import { CreditCard, Store, TrendingUp, Sparkles } from 'lucide-react'
-=======
 import { CreditCard, Store, TrendingUp } from 'lucide-react'
->>>>>>> Stashed changes
 import { CreditCardNetwork, PaymentFlow, CreditScoreChart } from '@/components/animations'
 
 export const FeaturesSection = () => {
@@ -221,11 +217,7 @@ export const FeaturesSection = () => {
                       {/* Content Section - Flexible Height */}
                       <dd className="flex flex-auto flex-col text-base leading-7 text-slate-200 group-hover:text-white transition-colors duration-300">
                         {/* Base description - hidden on hover */}
-<<<<<<< Updated upstream
-                        <div className={`overflow-hidden transition-all duration-400 ease-in-out ${
-=======
                         <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
->>>>>>> Stashed changes
                           isHovered 
                             ? 'max-h-0 opacity-0' 
                             : 'max-h-32 opacity-100'
@@ -236,11 +228,7 @@ export const FeaturesSection = () => {
                         </div>
                         
                         {/* Key Benefits - only visible on hover */}
-<<<<<<< Updated upstream
-                        <div className={`overflow-hidden transition-all duration-400 ease-in-out ${
-=======
                         <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
->>>>>>> Stashed changes
                           isHovered 
                             ? 'max-h-48 opacity-100 flex-1' 
                             : 'max-h-0 opacity-0'
