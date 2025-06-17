@@ -149,7 +149,7 @@ export const HeroSection = () => {
               }}
             >
               <Image 
-                src="/images/metamask-card4x.avif" 
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ? 'images/metamask-card4x.avif' : '/images/metamask-card4x.avif'}`}
                 alt="metamask card" 
                 width={500} 
                 height={500}
