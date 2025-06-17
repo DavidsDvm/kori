@@ -11,6 +11,7 @@
   "dependencies": {
     "@circle-fin/developer-controlled-wallets": "^8.2.0",
     "@circle-fin/modular-wallets-core": "^1.0.8",
+    "@gsap/react": "^2.1.2",
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "@lifi/sdk": "^3.7.9",
