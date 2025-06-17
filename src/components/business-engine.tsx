@@ -55,24 +55,24 @@ const merchantBenefits = [
     pain: 'Payouts held 7–14 days or more for new sellers',
     solution: 'USDC lands the moment the sale clears—no reserves, no rolling holds',
     icon: ArrowRight,
-    color: 'from-red-500 to-pink-500',
-    bgColor: 'from-red-50 to-pink-50',
+    color: 'from-kori-500 to-kori-600',
+    bgColor: 'from-kori-50 to-kori-100',
   },
   {
     title: 'High Fees',
     pain: '3–4% card fees + chargebacks',
     solution: '1% Kori settlement fee, zero fraud chargebacks (Kori owns risk)',
     icon: DollarSign,
-    color: 'from-orange-500 to-red-500',
-    bgColor: 'from-orange-50 to-red-50',
+    color: 'from-success-500 to-success-600',
+    bgColor: 'from-success-50 to-success-100',
   },
   {
     title: 'Limited Credit',
     pain: 'Small BNPL tickets (<$400)',
     solution: 'Basket sizes climb as users tap expanding Kori lines',
     icon: TrendingUp,
-    color: 'from-purple-500 to-indigo-500',
-    bgColor: 'from-purple-50 to-indigo-50',
+    color: 'from-accent-500 to-accent-600',
+    bgColor: 'from-accent-50 to-accent-100',
   },
 ]
 
@@ -297,25 +297,50 @@ export function BusinessEngine() {
                 key={index}
                 className="merchant-benefit group relative"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-10 transition-all duration-500`} />
-                <div className={`relative bg-gradient-to-br ${benefit.bgColor} rounded-2xl p-6 border border-gray-200 group-hover:shadow-lg transition-all duration-300`}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-10 h-10 bg-gradient-to-br ${benefit.color} rounded-xl flex items-center justify-center`}>
-                      <benefit.icon className="w-5 h-5 text-white" />
+                <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-15 transition-all duration-500`} />
+                <div className={`relative bg-gradient-to-br ${benefit.bgColor} rounded-3xl p-8 border-2 border-gray-100 group-hover:border-gray-300 group-hover:shadow-xl transition-all duration-300 backdrop-blur-sm h-full`}>
+                  {/* Header */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={`w-14 h-14 bg-gradient-to-br ${benefit.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                      <benefit.icon className="w-7 h-7 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-gray-900">{benefit.title}</h4>
+                    <h4 className="text-2xl font-bold text-gray-900">{benefit.title}</h4>
                   </div>
                   
-                  <div className="space-y-4">
-                    <div className="bg-red-50 rounded-xl p-4 border border-red-100">
-                      <div className="text-xs font-semibold text-red-600 uppercase tracking-wide mb-2">Pain Point</div>
-                      <p className="text-gray-700 text-sm">{benefit.pain}</p>
+                  {/* Content with better visual hierarchy */}
+                  <div className="space-y-6">
+                    {/* Current Problem */}
+                    <div className="relative">
+                      <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                        Current Challenge
+                      </div>
+                      <p className="text-gray-600 text-sm leading-relaxed italic">
+                        "{benefit.pain}"
+                      </p>
                     </div>
-                    <div className="bg-green-50 rounded-xl p-4 border border-green-100">
-                      <div className="text-xs font-semibold text-green-600 uppercase tracking-wide mb-2">Kori Solution</div>
-                      <p className="text-gray-700 text-sm">{benefit.solution}</p>
+                    
+                    {/* Divider */}
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+                      <div className={`w-2 h-2 bg-gradient-to-br ${benefit.color} rounded-full`}></div>
+                      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+                    </div>
+                    
+                    {/* Our Solution */}
+                    <div className="relative">
+                      <div className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <div className={`w-1 h-1 bg-gradient-to-br ${benefit.color} rounded-full`}></div>
+                        Kori Advantage
+                      </div>
+                      <p className="text-gray-800 font-medium text-sm leading-relaxed">
+                        {benefit.solution}
+                      </p>
                     </div>
                   </div>
+                  
+                  {/* Decorative bottom element */}
+                  <div className={`absolute bottom-6 right-6 w-12 h-12 bg-gradient-to-br ${benefit.color} rounded-full opacity-5 group-hover:opacity-10 transition-opacity duration-300`} />
                 </div>
               </div>
             ))}
