@@ -1,7 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
 import { DollarSign, CreditCard, TrendingUp, Banknote, ArrowRight, Shield, Zap } from 'lucide-react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -15,19 +14,19 @@ const revenueStreams = [
     icon: DollarSign,
     title: 'Instant-payout fee',
     description: '1% of every merchant settlement',
-    color: 'from-green-500 to-green-600',
-    bgColor: 'from-green-50 to-green-100',
-    textColor: 'text-green-700',
-    iconColor: 'text-green-600',
+    color: 'from-blue-500 to-blue-600',
+    bgColor: 'from-blue-50 to-blue-100',
+    textColor: 'text-blue-700',
+    iconColor: 'text-blue-600',
   },
   {
     icon: CreditCard,
     title: 'Interchange share',
     description: '~0.6% on card-rail spend',
-    color: 'from-blue-500 to-blue-600',
-    bgColor: 'from-blue-50 to-blue-100',
-    textColor: 'text-blue-700',
-    iconColor: 'text-blue-600',
+    color: 'from-indigo-500 to-indigo-600',
+    bgColor: 'from-indigo-50 to-indigo-100',
+    textColor: 'text-indigo-700',
+    iconColor: 'text-indigo-600',
   },
   {
     icon: TrendingUp,
@@ -42,10 +41,10 @@ const revenueStreams = [
     icon: Banknote,
     title: 'Float yield',
     description: 'Idle USDC swept into T-bill–backed on-chain funds',
-    color: 'from-amber-500 to-amber-600',
-    bgColor: 'from-amber-50 to-amber-100',
-    textColor: 'text-amber-700',
-    iconColor: 'text-amber-600',
+    color: 'from-violet-500 to-violet-600',
+    bgColor: 'from-violet-50 to-violet-100',
+    textColor: 'text-violet-700',
+    iconColor: 'text-violet-600',
   },
 ]
 
@@ -55,24 +54,24 @@ const merchantBenefits = [
     pain: 'Payouts held 7–14 days or more for new sellers',
     solution: 'USDC lands the moment the sale clears—no reserves, no rolling holds',
     icon: ArrowRight,
-    color: 'from-kori-500 to-kori-600',
-    bgColor: 'from-kori-50 to-kori-100',
+    color: 'from-sky-500 to-sky-600',
+    bgColor: 'from-sky-50 to-sky-100',
   },
   {
     title: 'High Fees',
     pain: '3–4% card fees + chargebacks',
     solution: '1% Kori settlement fee, zero fraud chargebacks (Kori owns risk)',
     icon: DollarSign,
-    color: 'from-success-500 to-success-600',
-    bgColor: 'from-success-50 to-success-100',
+    color: 'from-cyan-500 to-cyan-600',
+    bgColor: 'from-cyan-50 to-cyan-100',
   },
   {
     title: 'Limited Credit',
     pain: 'Small BNPL tickets (<$400)',
     solution: 'Basket sizes climb as users tap expanding Kori lines',
     icon: TrendingUp,
-    color: 'from-accent-500 to-accent-600',
-    bgColor: 'from-accent-50 to-accent-100',
+    color: 'from-indigo-500 to-indigo-600',
+    bgColor: 'from-indigo-50 to-indigo-100',
   },
 ]
 
@@ -253,22 +252,25 @@ export function BusinessEngine() {
           </p>
         </div>
 
-        {/* Revenue Streams - GSAP Enhanced */}
+        {/* Revenue Streams - GSAP Enhanced with Equal Heights */}
         <div ref={revenueCardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {revenueStreams.map((stream, index) => (
             <div
               key={index}
-              className="revenue-card group relative cursor-pointer"
+              className="revenue-card group relative cursor-pointer h-60 w-full"
             >
               <div className={`card-bg absolute inset-0 bg-gradient-to-br ${stream.color} rounded-3xl blur-xl opacity-0 transition-all duration-500`} />
-              <div className={`relative bg-gradient-to-br ${stream.bgColor} rounded-3xl p-6 border-2 border-transparent group-hover:border-gray-300 shadow-lg group-hover:shadow-2xl transition-all duration-500 backdrop-blur-sm`}>
-                {/* Icon */}
-                <div className={`card-icon w-14 h-14 bg-gradient-to-br ${stream.color} rounded-2xl flex items-center justify-center shadow-lg mb-4 transition-transform duration-300`}>
+              <div className={`relative bg-gradient-to-br ${stream.bgColor} rounded-3xl p-6 border-2 border-transparent group-hover:border-gray-300 shadow-lg group-hover:shadow-2xl transition-all duration-500 backdrop-blur-sm h-full flex flex-col`}>
+                {/* Icon - Fixed position */}
+                <div className={`card-icon w-14 h-14 bg-gradient-to-br ${stream.color} rounded-2xl flex items-center justify-center shadow-lg mb-6 transition-transform duration-300 flex-shrink-0`}>
                   <stream.icon className="w-7 h-7 text-white" />
                 </div>
                 
-                <h3 className={`text-xl font-bold mb-3 ${stream.textColor}`}>{stream.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{stream.description}</p>
+                {/* Content - Flex grow */}
+                <div className="flex-1 flex flex-col">
+                  <h3 className={`text-xl font-bold mb-4 ${stream.textColor}`}>{stream.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed flex-1">{stream.description}</p>
+                </div>
                 
                 {/* Decorative element */}
                 <div className={`absolute top-4 right-4 w-8 h-8 bg-gradient-to-br ${stream.color} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
@@ -295,22 +297,22 @@ export function BusinessEngine() {
             {merchantBenefits.map((benefit, index) => (
               <div
                 key={index}
-                className="merchant-benefit group relative"
+                className="merchant-benefit group relative h-full"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-15 transition-all duration-500`} />
-                <div className={`relative bg-gradient-to-br ${benefit.bgColor} rounded-3xl p-8 border-2 border-gray-100 group-hover:border-gray-300 group-hover:shadow-xl transition-all duration-300 backdrop-blur-sm h-full`}>
-                  {/* Header */}
-                  <div className="flex items-center gap-4 mb-6">
+                <div className={`relative bg-gradient-to-br ${benefit.bgColor} rounded-3xl p-8 border-2 border-gray-100 group-hover:border-gray-300 group-hover:shadow-xl transition-all duration-300 backdrop-blur-sm h-full flex flex-col`}>
+                  {/* Header - Fixed height */}
+                  <div className="flex items-center gap-4 mb-6 flex-shrink-0">
                     <div className={`w-14 h-14 bg-gradient-to-br ${benefit.color} rounded-2xl flex items-center justify-center shadow-lg`}>
                       <benefit.icon className="w-7 h-7 text-white" />
                     </div>
                     <h4 className="text-2xl font-bold text-gray-900">{benefit.title}</h4>
                   </div>
                   
-                  {/* Content with better visual hierarchy */}
-                  <div className="space-y-6">
+                  {/* Content with better visual hierarchy - Flex grow */}
+                  <div className="space-y-6 flex-1 flex flex-col">
                     {/* Current Problem */}
-                    <div className="relative">
+                    <div className="relative flex-shrink-0">
                       <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
                         <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
                         Current Challenge
@@ -321,14 +323,14 @@ export function BusinessEngine() {
                     </div>
                     
                     {/* Divider */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 flex-shrink-0">
                       <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
                       <div className={`w-2 h-2 bg-gradient-to-br ${benefit.color} rounded-full`}></div>
                       <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
                     </div>
                     
-                    {/* Our Solution */}
-                    <div className="relative">
+                    {/* Our Solution - Flex grow */}
+                    <div className="relative flex-1">
                       <div className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
                         <div className={`w-1 h-1 bg-gradient-to-br ${benefit.color} rounded-full`}></div>
                         Kori Advantage
@@ -347,7 +349,7 @@ export function BusinessEngine() {
           </div>
         </div>
 
-        {/* Risk Management - GSAP Enhanced */}
+        {/* Risk Management - GSAP Enhanced with proper shadows */}
         <div
           ref={riskSectionRef}
           className="risk-section bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl shadow-2xl border border-indigo-200 p-8"
@@ -368,7 +370,7 @@ export function BusinessEngine() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/50">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
                   <Shield className="w-6 h-6 text-white" />
@@ -391,24 +393,24 @@ export function BusinessEngine() {
               </ul>
             </div>
             
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/50">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
                   <Zap className="w-6 h-6 text-white" />
                 </div>
                 <h4 className="text-xl font-bold text-gray-900">Merchant Protection</h4>
               </div>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
                   <span className="text-gray-700">Instant USDC settlements</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
                   <span className="text-gray-700">No chargeback risk</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
                   <span className="text-gray-700">Growing customer base</span>
                 </li>
               </ul>
