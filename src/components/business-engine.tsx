@@ -91,7 +91,7 @@ export function BusinessEngine() {
         trigger: containerRef.current,
         start: "top 80%",
         end: "bottom 20%",
-        toggleActions: "play none none reverse"
+        toggleActions: "play reverse play reverse" // Play on enter, reverse on leave back up, play again on re-enter
       }
     })
 

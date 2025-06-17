@@ -49,7 +49,7 @@ export const StatsSection = () => {
               data-stat={index}
               initial={{ opacity: 0, y: 80, scale: 0.8 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8, delay: index * 0.1, ease: "backOut" }}
             >
               {/* Enhanced Card Background */}
@@ -85,7 +85,7 @@ export const StatsSection = () => {
                       className={`stat-progress stat-progress-${index} h-full bg-gradient-to-r ${stat.color}`}
                       initial={{ width: 0 }}
                       whileInView={{ width: "100%" }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false }}
                       transition={{ duration: 2, delay: 1 + index * 0.1, ease: "easeOut" }}
                     />
                   </div>

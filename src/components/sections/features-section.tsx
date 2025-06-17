@@ -85,8 +85,8 @@ export const FeaturesSection = () => {
           <div className="mx-auto max-w-4xl lg:text-center relative mb-20">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+                          whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
               transition={{ duration: 0.6 }}
               className="relative"
             >
@@ -129,6 +129,7 @@ export const FeaturesSection = () => {
                 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <span className="bg-gradient-to-r from-gray-900 via-indigo-900 to-purple-900 bg-clip-text text-transparent">
@@ -144,6 +145,7 @@ export const FeaturesSection = () => {
                 className="mt-8 max-w-3xl mx-auto"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <p className="text-xl leading-8 text-gray-600 font-medium">

@@ -26,7 +26,7 @@ export const TierSection = () => {
           id="tier-header"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700 ring-2 ring-indigo-200 mb-8">
@@ -82,7 +82,7 @@ export const TierSection = () => {
               data-tier={index}
               initial={{ opacity: 0, y: 80, scale: 0.9 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8, delay: index * 0.1, ease: "backOut" }}
               whileHover={{ scale: 1.05, y: -10 }}
             >
@@ -123,7 +123,7 @@ export const TierSection = () => {
                       className={`h-full bg-gradient-to-r ${tier.color} tier-progress tier-progress-${index}`}
                       initial={{ width: 0 }}
                       whileInView={{ width: `${((index + 1) / 5) * 100}%` }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false }}
                       transition={{ duration: 2, delay: 0.5 + index * 0.1, ease: "easeOut" }}
                     />
                   </div>
@@ -141,7 +141,7 @@ export const TierSection = () => {
           id="tier-description"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">

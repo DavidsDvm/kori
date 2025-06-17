@@ -24,7 +24,7 @@ export const HowItWorksSection = () => {
           id="how-it-works-header"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700 ring-2 ring-indigo-200 mb-8">
@@ -71,7 +71,7 @@ export const HowItWorksSection = () => {
               className={`how-it-works-step step-${index} relative group`}
               initial={{ opacity: 0, y: 80, scale: 0.9 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8, delay: index * 0.2, ease: "backOut" }}
             >
               {/* Connecting Line */}
@@ -119,7 +119,7 @@ export const HowItWorksSection = () => {
                       className={`h-full bg-gradient-to-r ${step.color} step-progress step-progress-${index}`}
                       initial={{ width: 0 }}
                       whileInView={{ width: `${((index + 1) / 3) * 100}%` }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false }}
                       transition={{ duration: 2, delay: 0.5 + index * 0.2, ease: "easeOut" }}
                     />
                   </div>
@@ -137,7 +137,7 @@ export const HowItWorksSection = () => {
           className="text-center mt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-gray-200">
