@@ -1672,6 +1672,9 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+        {/* Smooth Transition Bridge */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-50" />
       </div>
 
       {/* Enhanced Tier Comparison Section with GSAP */}
@@ -2203,7 +2206,7 @@ export default function HomePage() {
               <WalletConnect />
               <a
                 href="#"
-                className="text-sm font-semibold leading-6 text-white"
+                className="text-sm font-semibell leading-6 text-white"
               >
                 Learn more <span aria-hidden="true">→</span>
               </a>
