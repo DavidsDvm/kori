@@ -20,7 +20,7 @@ const navigation = {
     },
     {
       name: 'GitHub',
-      href: '#',
+      href: 'https://github.com/DavidsDvm/kori',
       icon: Github,
     },
   ],

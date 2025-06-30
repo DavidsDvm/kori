@@ -24,7 +24,7 @@ export function Navbar() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <Image
-              src="/images/kori.png"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ? 'images/kori.png' : '/images/kori.png'}`}
               alt="Kori"
               width={0}
               height={0}
@@ -73,7 +73,7 @@ export function Navbar() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <Image
-                src="/images/kori.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ? 'images/kori.png' : '/images/kori.png'}`}
                 alt="Kori"
                 width={0}
                 height={0}
